@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crm',
     'rest_framework',
-    'graphene_django'
+    'graphene_django',
+    'django_filters'
 ]
 
 GRAPHENE = {
