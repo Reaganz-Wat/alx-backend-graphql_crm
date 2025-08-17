@@ -20,13 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1pev)7gm88t83+#v0+kj5_by0rb*3b*6sd%b4^^*&-g#qsm+92'
+SECRET_KEY = 'django-insecure-ppnbzbcg5h61-m2-p-&w+mh!9k&-pqj$)ezc1i=hc&yw&%&6k^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 
 # Application definition
@@ -43,6 +42,10 @@ INSTALLED_APPS = [
     'graphene_django'
 ]
 
+GRAPHENE = {
+    "SCHEMA": "alx_backend_graphql_crm.schema.schema",  
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,9 +58,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'alx_backend_graphql_crm.urls'
 
-GRAPHENE = {
-    "SCHEMA": "alx_backend_graphql_crm.schema.schema",  
-}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
