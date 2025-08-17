@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crm',
-    'rest_framework'
+    'rest_framework',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +55,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'alx_backend_graphql_crm.urls'
 
+GRAPHENE = {
+    "SCHEMA": "alx_backend_graphql_crm.schema.schema",  
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
