@@ -199,19 +199,3 @@ class Mutation(graphene.ObjectType):
     bulk_create_customers = BulkCreateCustomers.Field()
     create_product = CreateProduct.Field()
     create_order = CreateOrder.Field()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
