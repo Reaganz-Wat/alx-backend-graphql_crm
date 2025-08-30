@@ -10,8 +10,8 @@ cutoff_date = (datetime.now() - timedelta(days=7)).isoformat()
 
 # GraphQL query (adapted to your models)
 query = """
-query RecentOrders($cutoff: DateTime!) {
-  orders(orderDate_Gte: $cutoff) {
+query GetOrders($cutoff: DateTime) {
+  orders(orderDateGte: $cutoff) {
     id
     customer {
       email

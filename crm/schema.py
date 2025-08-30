@@ -182,7 +182,14 @@ class CreateOrder(graphene.Mutation):
 class Query(graphene.ObjectType):
     customers = graphene.List(CustomerType)
     products = graphene.List(ProductType)
-    orders = graphene.List(OrderType)
+    orders = graphene.List(
+        OrderType,
+        order_date_gte=graphene.DateTime(required=False),
+        order_date_lte=graphene.DateTime(required=False),
+    )
+    
+    # This gets product by id
+    product = graphene.Field(ProductType, id=graphene.ID(required=True))
 
     def resolve_customers(root, info):
         return Customer.objects.all()
@@ -190,8 +197,22 @@ class Query(graphene.ObjectType):
     def resolve_products(root, info):
         return Product.objects.all()
 
-    def resolve_orders(root, info):
-        return Order.objects.all()
+    def resolve_orders(root, info, order_date_gte=None, order_date_lte=None):
+        qs = Order.objects.all()
+        
+        if order_date_gte:
+            qs = qs.filter(order_date__gte=order_date_gte)
+        if order_date_lte:
+            qs = qs.filter(order_date__lte=order_date_lte)
+        
+        return qs
+    
+    # Also put the resolver for getting the product by id
+    def resolve_product(root, info, id):
+        try:
+            return Product.objects.get(pk=id)
+        except Product.DoesNotExist:
+            return None
 
 
 class Mutation(graphene.ObjectType):
